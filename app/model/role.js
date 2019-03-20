@@ -1,11 +1,7 @@
 'use strict';
 
 module.exports = app => {
-  const {
-    INTEGER,
-    STRING,
-    DATE,
-  } = app.Sequelize;
+  const { INTEGER, STRING, DATE } = app.Sequelize;
   const Role = app.model.define('role', {
     id: {
       type: INTEGER,
@@ -18,15 +14,16 @@ module.exports = app => {
     status: {
       type: INTEGER,
     },
-    created_at: DATE,
-    updated_at: DATE,
+    created_at: app.Sequelize.DATE,
+    updated_at: {
+      type: app.Sequelize.DATE,
+    },
   }, {
     freezeTableName: true,
+    // underscored: true,
   });
   Role.associate = function() {
-    app.model.Role.hasMany(app.model.User);
-    app.model.Role.hasOne(app.model.Access);
-    // app.model.Role.hasMany(app.model.Access);
+    app.model.Role.hasMany(app.model.User, { as: 'user' });
   };
   return Role;
 };

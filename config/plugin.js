@@ -1,12 +1,17 @@
 'use strict';
 
-// had enabled by egg
-// exports.static = true;
-exports.nunjucks = {
-  enable: true,
-  package: 'egg-view-nunjucks',
-};
-exports.sequelize = {
-  enable: true,
-  package: 'egg-sequelize',
+/** @type Egg.EggPlugin */
+module.exports = {
+  // had enabled by egg
+  // static: {
+  //   enable: true,
+  // }
+  ejs: {
+    enable: true,
+    package: 'egg-view-ejs',
+  },
+  sequelize: {
+    enable: true,
+    package: 'egg-sequelize',
+  },
 };

@@ -2,29 +2,34 @@
 
 module.exports = app => {
     const { INTEGER, STRING, DATE } = app.Sequelize;
-    const User = app.model.define('user', {
+    const Permission = app.model.define('permission', {
         id: {
             type: INTEGER,
             primaryKey: true,
             autoIncrement: true,
         },
-        username: {
+        title: {
             type: STRING,
         },
-        password: {
+        url: {
             type: STRING,
+        },
+        status: {
+            type: INTEGER,
+        },
+        type: {
+            type: INTEGER,
         },
         created_at: DATE,
         updated_at: DATE,
-        roleId: {
+        permission_id: {
             type: INTEGER,
-            field: 'role_id',
         },
     }, {
         freezeTableName: true,
     });
-    User.associate = function() {
-        app.model.User.belongsTo(app.model.Role, { as: 'role' });
+    Permission.associate = function() {
+        app.model.Permission.hasMany(app.model.Permission, { as: 'permissions', foreignKey: 'permission_id' });
     };
-    return User;
+    return Permission;
 };

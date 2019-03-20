@@ -1,0 +1,49 @@
+<%- include ../public/page_header.html %>
+    <div class="app-layout">
+        <%- include ../public/page_nav.html %>
+            <div class="layout-main table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>name</th>
+                            <th>状态</th>
+                            <th>创建时间</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(var i =0;i<roleList.length;i++){ %>
+
+                            <tr>
+                                <td>
+                                    <%= roleList[i].id%>
+                                </td>
+                                <td>
+                                    <%= roleList[i].name%>
+                                </td>
+                                <td>
+                                    <%= roleList[i].status%>
+                                </td>
+                                <td>
+                                    <%= roleList[i].created_at%>
+                                </td>
+                                <td>
+                                    <%= roleList[i].updated_at%>
+                                </td>
+                                <td>
+                                    <a href="/admin/role/auth?id=<%= roleList[i].id%>">授权</a>
+                                    <a href="/admin/role/edit?id=<%= roleList[i].id%>">编辑</a>
+                                    <a href="/admin/role/delete/<%= roleList[i].id%>">删除</a>
+                                </td>
+                            </tr>
+                            <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+
+    <%- include ../public/page_footer.html %>

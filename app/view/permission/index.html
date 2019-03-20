@@ -1,0 +1,98 @@
+<%- include ../public/page_header.html %>
+    <div class="app-layout">
+        <%- include ../public/page_nav.html %>
+            <div class="layout-main table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>标题</th>
+                            <th>节点类型</th>
+                            <th>url</th>
+                            <th>所属模块</th>
+                            <th>创建时间</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(var i =0;i<permissionList.length;i++){ %>
+
+                            <tr class="<%if(permissionList[i].permission_id == 0){%> actived
+                                    <%}%>">
+                                <td>
+                                    <%= permissionList[i].id%>
+                                </td>
+                                <td>
+                                    <%= permissionList[i].title%>
+                                </td>
+                                <td>
+                                    <%if(permissionList[i].type==1){%>
+                                        模块
+                                        <%}else if(permissionList[i].type==2){%>
+                                            菜单
+                                            <%}else{%>
+                                                操作
+                                                <%}%>
+                                </td>
+                                <td>
+                                    <%= permissionList[i].url%>
+                                </td>
+                                <td>
+                                    <%= permissionList[i].title%>
+                                </td>
+                                <td>
+                                    <%= permissionList[i].created_at%>
+                                </td>
+                                <td>
+                                    <%= permissionList[i].updated_at%>
+                                </td>
+                                <td>
+                                    <a href="/admin/permission/edit?id=<%= permissionList[i].id%>">编辑</a>
+                                    <a href="/admin/permission/delete/<%= permissionList[i].id%>">删除</a>
+                                </td>
+                            </tr>
+                            <%for(var j =0;j<permissionList[i].permissions.length;j++){%>
+                                <tr>
+                                    <td>
+                                        <%= permissionList[i].permissions[j].id%>
+                                    </td>
+                                    <td>
+                                        <%= permissionList[i].permissions[j].title%>
+                                    </td>
+                                    <td>
+                                        <%if(permissionList[i].permissions[j].type==1){%>
+                                            模块
+                                            <%}else if(permissionList[i].permissions[j].type==2){%>
+                                                菜单
+                                                <%}else{%>
+                                                    操作
+                                                    <%}%>
+                                    </td>
+                                    <td>
+                                        <%= permissionList[i].permissions[j].url%>
+                                    </td>
+                                    <td>
+                                        <%= permissionList[i].title%>
+                                    </td>
+                                    <td>
+                                        <%= permissionList[i].permissions[j].created_at%>
+                                    </td>
+                                    <td>
+                                        <%= permissionList[i].permissions[j].updated_at%>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/permission/edit?id=<%= permissionList[i].permissions[j].id%>">编辑</a>
+                                        <a href="/admin/permission/delete/<%= permissionList[i].permissions[j].id%>">删除</a>
+                                    </td>
+                                    <%}%>
+                                </tr>
+                                <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+
+    <%- include ../public/page_footer.html %>

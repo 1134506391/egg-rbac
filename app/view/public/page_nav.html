@@ -1,0 +1,11 @@
+<div class="layout-nav">
+    <ul class="nav nav-pills nav-stacked">
+        <%for(var i =0;i<pageNav.length;i++){%>
+            <li role="presentation" class="active"><a href=<%=pageNav[i].url%>><%=pageNav[i].title%></a></li>
+            <%for(var j = 0;j<pageNav[i].permissions.length;j++){%>
+                <li role="presentation"><a href=<%=pageNav[i].permissions[j].url%>><%=pageNav[i].permissions[j].title%></a></li>
+                <%}%>
+                    <%}%>
+
+    </ul>
+</div>

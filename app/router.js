@@ -4,27 +4,36 @@
  * @param {Egg.Application} app - egg application
  */
 module.exports = app => {
-  const {
-    router,
-    controller,
-  } = app;
-  // router.get('/', controller.home.index);
-  app.router.get('/', 'index.render');
+    const { router, controller } = app;
+    router.get('/', controller.home.index);
+    router.get('/admin', controller.admin.admin.index);
+    router.get('/admin/register', controller.admin.admin.register);
+    router.get('/admin/login', controller.admin.admin.login);
+    router.post('/admin/login', controller.admin.admin.doLogin);
+    router.get('/admin/loginout', controller.admin.admin.loginout);
+    router.get('/admin/noPermission', controller.admin.admin.noPermission);
+    //角色
+    router.get('/admin/role', controller.admin.role.index);
+    router.get('/admin/role/add', controller.admin.role.add);
+    router.post('/admin/role/doAdd', controller.admin.role.doAdd);
+    router.get('/admin/role/edit', controller.admin.role.edit);
+    router.post('/admin/role/doEdit', controller.admin.role.doEdit);
+    router.get('/admin/role/delete/:id', controller.admin.role.delete);
+    router.get('/admin/role/auth', controller.admin.role.auth);
+    router.post('/admin/role/auth', controller.admin.role.doAuth);
 
-  app.router.get('/userFind', app.controller.test1.test1);
-  app.router.get('/userCreate', app.controller.test1.test2);
-  app.router.get('/userUpdate', app.controller.test1.test3);
-  app.router.get('/userDestroy', app.controller.test1.test4);
-  app.router.get('/noAllow', app.controller.test1.noAllow);
-  app.router.get('/login', app.controller.test1.loginHtml);
-  app.router.post('/login', app.controller.test1.login);
-  app.router.get('/logout', app.controller.test1.logout);
-
-
-  app.router.get('/userAll', app.controller.user.findAll);
-  app.router.get('/user/:id', app.controller.user.findOne);
-
-  app.router.get('/roleAll', app.controller.role.findAll);
-
-  app.router.get('/accessAll', app.controller.access.findAll);
+    //用户
+    router.get('/admin/user', controller.admin.user.index);
+    router.get('/admin/user/add', controller.admin.user.add);
+    router.post('/admin/user/doAdd', controller.admin.user.doAdd);
+    router.get('/admin/user/edit', controller.admin.user.edit);
+    router.post('/admin/user/doEdit', controller.admin.user.doEdit);
+    router.get('/admin/user/delete/:id', controller.admin.user.delete);
+    //权限
+    router.get('/admin/permission', controller.admin.permission.index);
+    router.get('/admin/permission/add', controller.admin.permission.add);
+    router.post('/admin/permission/doAdd', controller.admin.permission.doAdd);
+    router.get('/admin/permission/edit', controller.admin.permission.edit);
+    router.post('/admin/permission/doEdit', controller.admin.permission.doEdit);
+    router.get('/admin/permission/delete/:id', controller.admin.permission.delete);
 };

@@ -1,0 +1,62 @@
+html {
+    padding-top: 70px;
+}
+
+.app-layout {
+    /* padding-top: 50px; */
+}
+
+.app-layout .layout-nav {
+    position: fixed;
+    left: 0;
+    top: 70px;
+    width: 200px;
+    height: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid #ccc;
+}
+
+.app-layout .layout-main {
+    margin-left: 220px;
+}
+
+tr.actived {
+    background-color: #00aaee;
+}
+
+.access-box {
+    display: flex;
+}
+
+.access-box .box-left {
+    flex: 0 0 100px;
+    width: 100px;
+}
+
+.access-box .box-right {
+    flex: 1;
+}
+
+.app-header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 2px #ccc;
+}
+
+.app-footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+    margin-left: 220px;
+    text-align: center;
+}

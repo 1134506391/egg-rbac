@@ -1,0 +1,37 @@
+<%- include ../public/page_header.html %>
+    <div class="app-layout">
+        <%- include ../public/page_nav.html %>
+            <div class="layout-main">
+                <form action="/admin/role/auth" method="post">
+                    <input type="hidden" name="_csrf" value="<%=csrf%>">
+                    <input type="hidden" name="roleId" value="<%=roleId%>">
+                    <%for(var i =0;i<accessList.length;i++){ %>
+                        <ul>
+                            <li class="access-box">
+                                <div class="box-left">
+                                    <label>
+                                                        <input type="checkbox" value="<%=accessList[i].id%>" <%if(accessList[i].checked){%> checked
+                                                            <%}%> name="permissionIds[]">
+                                                        <%= accessList[i].title%>管理
+                                                </label>
+                                </div>
+                                <div class="box-right">
+
+                                    <%for(var j=0;j<accessList[i].permissions.length;j++){%>
+                                        <label>
+                                                    <input type="checkbox" value="<%=accessList[i].permissions[j].id%>" <%if(accessList[i].permissions[j].checked){%> checked
+                                                        <%}%> name="permissionIds[]">
+                                                    <%= accessList[i].permissions[j].title%>
+                                                </label>
+                                        <%}%>
+                                </div>
+                            </li>
+                        </ul>
+                        <%}%>
+                            <div>
+                                <button type="submit">确定</button>
+                            </div>
+                </form>
+            </div>
+    </div>
+    <%- include ../public/page_footer.html %>

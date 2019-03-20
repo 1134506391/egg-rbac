@@ -1,0 +1,48 @@
+<%- include ../public/page_header.html %>
+    <div class="app-layout">
+        <%- include ../public/page_nav.html %>
+            <div class="layout-main table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>id</th>
+                            <th>username</th>
+                            <th>角色</th>
+                            <th>创建时间</th>
+                            <th>修改时间</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%for(var i =0;i<userList.length;i++){ %>
+
+                            <tr>
+                                <td>
+                                    <%= userList[i].id%>
+                                </td>
+                                <td>
+                                    <%= userList[i].username%>
+                                </td>
+                                <td>
+                                    <%= userList[i].role.name%>
+                                </td>
+                                <td>
+                                    <%= userList[i].created_at%>
+                                </td>
+                                <td>
+                                    <%= userList[i].updated_at%>
+                                </td>
+                                <td>
+                                    <a href="/admin/user/edit?id=<%= userList[i].id%>">编辑</a>
+                                    <a href="/admin/user/delete/<%= userList[i].id%>">删除</a>
+                                </td>
+                            </tr>
+                            <%}%>
+
+                    </tbody>
+                </table>
+            </div>
+    </div>
+
+
+    <%- include ../public/page_footer.html %>
