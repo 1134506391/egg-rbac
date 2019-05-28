@@ -53,6 +53,7 @@ class AuthService extends Service {
     }
 
     async getAdminList(roleId) {
+
         const Op = this.ctx.app.Sequelize.Op;
         const { ctx } = this;
         let permission = await ctx.model.RolePermission.findAll({
@@ -61,6 +62,9 @@ class AuthService extends Service {
                 }
             })
             // 得到所有的权限ids
+        console.log('得到所有的权限ids')
+        console.log(roleId)
+        console.log(JSON.stringify(permission))
         let permissionIds = [];
         permission.forEach(item => {
             permissionIds.push(item.permission_id)
@@ -83,8 +87,8 @@ class AuthService extends Service {
             }]
         })
 
-        // console.log('ppppp')
-        // console.log(JSON.stringify(permissions))
+        console.log('permissions:')
+        console.log(JSON.stringify(permissions))
         return permissions;
     }
 }

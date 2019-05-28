@@ -45,6 +45,18 @@ class RoleService extends Service {
             console.log(error)
         }
     }
+    async findPermission() {
+        const permissionList = await this.ctx.model.Permission.findAll({
+            where: {
+                permission_id: 0
+            },
+            include: [{
+                model: this.ctx.model.Permission,
+                as: 'permissions',
+            }]
+        });
+        return permissionList
+    }
 }
 
 module.exports = RoleService;

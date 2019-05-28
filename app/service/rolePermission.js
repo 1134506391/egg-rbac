@@ -4,27 +4,29 @@ const Service = require('egg').Service;
 
 class RolePermissionService extends Service {
     async create(body) {
-        try {
-            let id = body.roleId;
-            let permissionId = body.permissionIds;
-            //先删除
-            await this.ctx.model.RolePermission.destroy({
-                    where: {
-                        role_id: id
-                    }
+            try {
+                let id = body.roleId;
+                let permissionId = body.permissionIds;
+                //先删除
+                await this.ctx.model.RolePermission.destroy({
+                        where: {
+                            role_id: id
+                        }
+                    })
+                    //后增加
+                permissionId.forEach(async(item) => {
+                    await this.ctx.model.RolePermission.create({
+                        role_id: id,
+                        permission_id: parseInt(item),
+                        status: 1
+                    })
                 })
-                //后增加
-            permissionId.forEach(async(item) => {
-                await this.ctx.model.RolePermission.create({
-                    role_id: id,
-                    permission_id: parseInt(item)
-                })
-            })
-        } catch (error) {
-            console.log(error)
+            } catch (error) {
+                console.log(error)
+            }
         }
-    }
-    async findAccess(roleId) {
+        //根据角色，得到权限
+    async findPermissionByRoleId(roleId) {
         const Op = this.ctx.app.Sequelize.Op;
         var rolePermissions = await this.ctx.model.RolePermission.findAll({
             where: {
@@ -39,11 +41,9 @@ class RolePermissionService extends Service {
             where: {
                 id: {
                     [Op.or]: permissionIds
-                }
-            }
+                },
+            },
         })
-        console.log('oo')
-        console.log(JSON.stringify(permissions))
         return permissions
     }
 }

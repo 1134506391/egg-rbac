@@ -2,7 +2,8 @@
     <div class="app-layout">
         <%- include ../public/page_nav.html %>
             <div class="layout-main">
-                <form action="/admin/user/doEdit" method="post" class="form-horizontal">
+                <h3>用户编辑</h3>
+                <form action="/admin/user/edit" method="post" class="form-horizontal">
                     <input type="hidden" name="_csrf" value="<%=csrf%>">
                     <input type="hidden" name="id" value="<%=user.id%>">
                     <div class="form-group">

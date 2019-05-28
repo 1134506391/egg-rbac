@@ -2,7 +2,8 @@
     <div class="app-layout">
         <%- include ../public/page_nav.html %>
             <div class="layout-main">
-                <form action="/admin/permission/doEdit" method="post" class="form-horizontal">
+                <h3>权限编辑</h3>
+                <form action="/admin/permission/edit" method="post" class="form-horizontal">
                     <input type="hidden" name="_csrf" value="<%=csrf%>">
                     <input type="hidden" name="id" value="<%=permission.id%>">
                     <div class="form-group">

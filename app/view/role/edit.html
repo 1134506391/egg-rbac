@@ -2,8 +2,8 @@
     <div class="app-layout">
         <%- include ../public/page_nav.html %>
             <div class="layout-main">
-
-                <form action="/admin/role/doEdit" method="post" class="form-horizontal">
+                <h3>角色编辑</h3>
+                <form action="/admin/role/edit" method="post" class="form-horizontal">
                     <input type="hidden" name="_csrf" value="<%=csrf%>">
                     <input type="hidden" name="id" value="<%=role.id %>">
                     <div class="form-group">

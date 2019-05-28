@@ -2,26 +2,27 @@
     <div class="app-layout">
         <%- include ../public/page_nav.html %>
             <div class="layout-main">
+                <h3>角色授权</h3>
                 <form action="/admin/role/auth" method="post">
                     <input type="hidden" name="_csrf" value="<%=csrf%>">
                     <input type="hidden" name="roleId" value="<%=roleId%>">
-                    <%for(var i =0;i<accessList.length;i++){ %>
+                    <%for(var i =0;i<permissionList.length;i++){ %>
                         <ul>
                             <li class="access-box">
                                 <div class="box-left">
                                     <label>
-                                                        <input type="checkbox" value="<%=accessList[i].id%>" <%if(accessList[i].checked){%> checked
+                                                        <input type="checkbox" value="<%=permissionList[i].id%>" <%if(permissionList[i].check){%> checked
                                                             <%}%> name="permissionIds[]">
-                                                        <%= accessList[i].title%>管理
+                                                        <%= permissionList[i].title%>管理
                                                 </label>
                                 </div>
                                 <div class="box-right">
 
-                                    <%for(var j=0;j<accessList[i].permissions.length;j++){%>
+                                    <%for(var j=0;j<permissionList[i].permissions.length;j++){%>
                                         <label>
-                                                    <input type="checkbox" value="<%=accessList[i].permissions[j].id%>" <%if(accessList[i].permissions[j].checked){%> checked
+                                                    <input type="checkbox" value="<%=permissionList[i].permissions[j].id%>" <%if(permissionList[i].permissions[j].check){%> checked
                                                         <%}%> name="permissionIds[]">
-                                                    <%= accessList[i].permissions[j].title%>
+                                                    <%= permissionList[i].permissions[j].title%>
                                                 </label>
                                         <%}%>
                                 </div>

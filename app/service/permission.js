@@ -3,16 +3,6 @@
 const Service = require('egg').Service;
 
 class PermissionService extends Service {
-    async findChild() {
-        const permissionList = await this.ctx.model.Permission.findAll({
-            include: [{
-                model: this.ctx.model.Permission,
-                as: 'permissions',
-            }]
-        });
-        return permissionList
-
-    }
     async findAll() {
         try {
             const permissionList = await this.ctx.model.Permission.findAll({
