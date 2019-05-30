@@ -42,7 +42,7 @@ class AdminController extends Controller {
         this.ctx.session.userInfo = null;
         this.ctx.redirect('/admin/login')
     }
-
+    //如果没有权限，就跳转到这里
     async noPermission() {
         await this.ctx.render('login/noPermission')
     }

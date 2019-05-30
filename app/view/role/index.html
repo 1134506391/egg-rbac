@@ -9,8 +9,6 @@
                             <th>id</th>
                             <th>name</th>
                             <th>状态</th>
-                            <th>创建时间</th>
-                            <th>修改时间</th>
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -27,12 +25,12 @@
                                 <td>
                                     <%= roleList[i].status%>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <%= roleList[i].created_at%>
                                 </td>
                                 <td>
                                     <%= roleList[i].updated_at%>
-                                </td>
+                                </td> -->
                                 <td>
                                     <a href="/admin/role/auth?id=<%= roleList[i].id%>">授权</a>
                                     <a href="/admin/role/edit?id=<%= roleList[i].id%>">编辑</a>

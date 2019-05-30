@@ -3,10 +3,11 @@ const url = require('url')
 const Service = require('egg').Service;
 
 class AuthService extends Service {
+    // 是否有权限
     async checkAdmin() {
         const Op = this.ctx.app.Sequelize.Op;
         const { ctx } = this;
-        const pathname = url.parse(ctx.request.url).pathname;
+        let pathname = url.parse(ctx.request.url).pathname;
         // 1.获取当前角色
         // 2.根据当前角色查出对应权限
         // 3.将权限里url,拼接成一个url数组
@@ -43,15 +44,23 @@ class AuthService extends Service {
         permissions.forEach(item => {
             permissionUrls.push(item.url)
         })
-        console.log('iiii')
+        console.log('当前url与权限url数组对比')
         console.log(JSON.stringify(permissionUrls))
+        console.log(pathname)
             // 4.
+        if(pathname.indexOf('delete') != -1){
+            console.log('有delete')
+            let strIndex = pathname.lastIndexOf('/')
+            console.log(strIndex)
+            pathname= pathname.slice(0,strIndex)
+            console.log(pathname)
+        }
         if (permissionUrls.indexOf(pathname) != -1) {
             return true;
         }
         return false;
     }
-
+    //左侧导航
     async getAdminList(roleId) {
 
         const Op = this.ctx.app.Sequelize.Op;
@@ -62,9 +71,9 @@ class AuthService extends Service {
                 }
             })
             // 得到所有的权限ids
-        console.log('得到所有的权限ids')
-        console.log(roleId)
-        console.log(JSON.stringify(permission))
+        // console.log('得到所有的权限ids')
+        // console.log(roleId)
+        // console.log(JSON.stringify(permission))
         let permissionIds = [];
         permission.forEach(item => {
             permissionIds.push(item.permission_id)
@@ -87,8 +96,8 @@ class AuthService extends Service {
             }]
         })
 
-        console.log('permissions:')
-        console.log(JSON.stringify(permissions))
+        // console.log('permissions:')
+        // console.log(JSON.stringify(permissions))
         return permissions;
     }
 }

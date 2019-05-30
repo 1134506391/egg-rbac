@@ -24,9 +24,6 @@ class UserController extends Controller {
         const id = this.ctx.query.id;
         const user = await this.ctx.service.user.findById(id);
         const roleList = await this.ctx.service.role.findAll();
-        console.log('e')
-        console.log(JSON.stringify(user))
-        console.log(JSON.stringify(roleList))
         await this.ctx.render('user/edit', {
             user,
             roleList
@@ -34,8 +31,6 @@ class UserController extends Controller {
     }
     async doEdit() {
         const newUser = this.ctx.request.body;
-        console.log('rr')
-        console.log(newUser)
         await this.ctx.service.user.update(newUser);
         this.ctx.redirect('/admin/user')
     }

@@ -12,9 +12,13 @@ module.exports = (options, app) => {
             // var d = await ctx.service.rolePermission.findAccess(roleId)
 
             let isPermission = await ctx.service.auth.checkAdmin();
+            console.log('是否有权限')
+            console.log(isPermission)
             if (isPermission) {
                 //左侧导航
                 let getAdminList = await ctx.service.auth.getAdminList(roleId);
+                // console.log('左侧导航')
+                // console.log(JSON.stringify(getAdminList))
                 ctx.state.pageNav = getAdminList;
                 await next()
             } else {

@@ -11,8 +11,8 @@
                             <th>节点类型</th>
                             <th>url</th>
                             <th>所属模块</th>
-                            <th>创建时间</th>
-                            <th>修改时间</th>
+                            <!-- <th>创建时间</th>
+                            <th>修改时间</th> -->
                             <th>操作</th>
                         </tr>
                     </thead>
@@ -42,12 +42,12 @@
                                 <td>
                                     <%= permissionList[i].title%>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <%= permissionList[i].created_at%>
                                 </td>
                                 <td>
                                     <%= permissionList[i].updated_at%>
-                                </td>
+                                </td> -->
                                 <td>
                                     <a href="/admin/permission/edit?id=<%= permissionList[i].id%>">编辑</a>
                                     <a href="/admin/permission/delete/<%= permissionList[i].id%>">删除</a>
@@ -76,12 +76,12 @@
                                     <td>
                                         <%= permissionList[i].title%>
                                     </td>
-                                    <td>
+                                    <!-- <td>
                                         <%= permissionList[i].permissions[j].created_at%>
                                     </td>
                                     <td>
                                         <%= permissionList[i].permissions[j].updated_at%>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <a href="/admin/permission/edit?id=<%= permissionList[i].permissions[j].id%>">编辑</a>
                                         <a href="/admin/permission/delete/<%= permissionList[i].permissions[j].id%>">删除</a>
