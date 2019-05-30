@@ -45,6 +45,11 @@ module.exports = appInfo => {
         encrypt: true, // 加密
         renew: true, // 最大时间范围内，刷新，自动增加最大时间
     };
+    config.cluster = {
+        listen: {
+          port: 8003,
+        },
+      };
     // add your user config here
     const userConfig = {
         // myAppName: 'egg',
